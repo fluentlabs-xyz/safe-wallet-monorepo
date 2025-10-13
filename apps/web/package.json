@@ -60,7 +60,7 @@
     "@safe-global/protocol-kit": "^5.2.17",
     "@safe-global/safe-apps-sdk": "^9.1.0",
     "@safe-global/safe-client-gateway-sdk": "v1.60.1",
-    "@safe-global/safe-deployments": "^1.37.45",
+    "@safe-global/safe-deployments": "github:fluentlabs-xyz/safe-deployments#feat/fluent-deployments",
     "@safe-global/safe-gateway-typescript-sdk": "3.23.1",
     "@safe-global/safe-modules-deployments": "^2.2.16",
     "@safe-global/store": "workspace:^",
