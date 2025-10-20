@@ -10247,30 +10247,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@safe-global/safe-deployments@github:fluentlabs-xyz/safe-deployments#feat/fluent-deployments":
+"@safe-global/safe-deployments@github:safe-global/safe-deployments#6bf1eaf82b68b5b4a5f438094bd7b8121b32d82f":
   version: 1.37.46
-  resolution: "@safe-global/safe-deployments@https://github.com/fluentlabs-xyz/safe-deployments.git#commit=61fd48acf22e2717b3847b2f9b061c63be944e1c"
+  resolution: "@safe-global/safe-deployments@https://github.com/safe-global/safe-deployments.git#commit=6bf1eaf82b68b5b4a5f438094bd7b8121b32d82f"
   dependencies:
     semver: "npm:^7.6.2"
-  checksum: 10/75ae28659f2af8161054f1d1642875766b82570b8c7ad51e30e791d913dc53675d6159e2e523b3432d62274ae7ca2dee3e0ecd353af105baf90cedabcbd664aa
-  languageName: node
-  linkType: hard
-
-"@safe-global/safe-deployments@npm:^1.37.35":
-  version: 1.37.35
-  resolution: "@safe-global/safe-deployments@npm:1.37.35"
-  dependencies:
-    semver: "npm:^7.6.2"
-  checksum: 10/a1683e22d9a6e6ea6bdf32b8edfa03f67b79b0884cfa5132b4e01ce0830ebb4479cff6635fcebeaf6ac198119c10b8e679cda6dbb4b81f5dd045494f79ee7a4b
-  languageName: node
-  linkType: hard
-
-"@safe-global/safe-deployments@npm:^1.37.45":
-  version: 1.37.45
-  resolution: "@safe-global/safe-deployments@npm:1.37.45"
-  dependencies:
-    semver: "npm:^7.6.2"
-  checksum: 10/5ee52114ad57a8db93245f0ca37afe8f50b825ad562ffd6b3122f63c55006a0344947473d209331deb3e01296a444ce25a15b5797e28a1f77443df46a5e4ed3f
+  checksum: 10/b9a5d5c59286edd067c8d8f27236032f1297d787964508f10581262a2cbaaf11ecdd1e6027c26faa3cc71271447a12592d834fa7cdceedaf33810cdd0fec2524
   languageName: node
   linkType: hard
 
@@ -10418,7 +10400,7 @@ __metadata:
     "@safe-global/protocol-kit": "npm:^5.2.17"
     "@safe-global/safe-apps-sdk": "npm:^9.1.0"
     "@safe-global/safe-client-gateway-sdk": "npm:v1.60.1"
-    "@safe-global/safe-deployments": "github:fluentlabs-xyz/safe-deployments#feat/fluent-deployments"
+    "@safe-global/safe-deployments": "github:safe-global/safe-deployments#6bf1eaf82b68b5b4a5f438094bd7b8121b32d82f"
     "@safe-global/safe-gateway-typescript-sdk": "npm:3.23.1"
     "@safe-global/safe-modules-deployments": "npm:^2.2.16"
     "@safe-global/store": "workspace:^"

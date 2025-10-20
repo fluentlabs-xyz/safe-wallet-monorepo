@@ -38,6 +38,9 @@ export const getCanonicalOrFirstAddress = (
   deployment: SingletonDeploymentV2 | undefined,
   chainId: string,
 ): string | undefined => {
+  console.log('>>>> getCanonicalOrFirstAddress called')
+  console.log('chainId', chainId)
+  console.log('deployment', deployment)
   if (!deployment) return undefined
 
   if (hasCanonicalDeployment(deployment, chainId)) {

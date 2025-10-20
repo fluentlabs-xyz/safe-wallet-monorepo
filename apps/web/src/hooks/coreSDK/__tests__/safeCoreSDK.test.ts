@@ -216,6 +216,28 @@ describe('safeCoreSDK', () => {
           safeAddress: expect.anything(),
         })
       })
+      it('should return an L1 SDK instance for a canonical mastercopy on fluent', async () => {
+        const chainId = '20994' // Fluent testnet
+        const version = '1.4.1'
+
+        const mockProvider = new JsonRpcProvider()
+        mockProvider.getNetwork = jest.fn().mockReturnValue({ chainId: BigInt(chainId) })
+
+        await initSafeSDK({
+          provider: mockProvider,
+          chainId,
+          address: toBeHex('0x1', 20),
+          version,
+          implementation: MAINNET_MASTER_COPY,
+          implementationVersionState: ImplementationVersionState.UP_TO_DATE,
+        })
+
+        expect(Safe.init).toHaveBeenCalledWith({
+          isL1SafeSingleton: true,
+          provider: expect.anything(),
+          safeAddress: expect.anything(),
+        })
+      })
     })
 
     describe('Unsupported contracts', () => {

@@ -28,6 +28,14 @@ export const useInitSafeCoreSDK = () => {
       return
     }
 
+    console.log('useInitSafeCoreSDK >> Starting initSafeSDK with params:', {
+      chainId: safe.chainId,
+      address: safe.address.value,
+      version: safe.version,
+      implementationVersionState: safe.implementationVersionState,
+      implementation: safe.implementation.value,
+    })
+
     // A read-only instance of the SDK is sufficient because we connect the signer to it when needed
     initSafeSDK({
       provider: web3ReadOnly,
@@ -38,9 +46,17 @@ export const useInitSafeCoreSDK = () => {
       implementation: safe.implementation.value,
       undeployedSafe,
     })
-      .then(setSafeSDK)
+      .then((sdk) => {
+        console.log('initSafeSDK succeeded:', sdk)
+        setSafeSDK(sdk)
+      })
       .catch((_e) => {
         const e = asError(_e)
+        console.error('initSafeSDK failed with error:', {
+          message: e.message,
+          stack: e.stack,
+          fullError: e,
+        })
         dispatch(
           showNotification({
             message: 'Error connecting to the blockchain. Please try reloading the page.',

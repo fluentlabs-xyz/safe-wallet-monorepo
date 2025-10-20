@@ -60,7 +60,7 @@
     "@safe-global/protocol-kit": "^5.2.17",
     "@safe-global/safe-apps-sdk": "^9.1.0",
     "@safe-global/safe-client-gateway-sdk": "v1.60.1",
-    "@safe-global/safe-deployments": "github:fluentlabs-xyz/safe-deployments#feat/fluent-deployments",
+    "@safe-global/safe-deployments": "github:safe-global/safe-deployments#6bf1eaf82b68b5b4a5f438094bd7b8121b32d82f",
     "@safe-global/safe-gateway-typescript-sdk": "3.23.1",
     "@safe-global/safe-modules-deployments": "^2.2.16",
     "@safe-global/store": "workspace:^",
@@ -163,6 +163,9 @@
     "typechain": "^8.3.2",
     "typescript": "~5.9.2",
     "typescript-plugin-css-modules": "^4.2.2"
+  },
+  "resolutions": {
+    "@safe-global/safe-deployments@*": "github:safe-global/safe-deployments#6bf1eaf82b68b5b4a5f438094bd7b8121b32d82f"
   },
   "nextBundleAnalysis": {
     "budget": null,

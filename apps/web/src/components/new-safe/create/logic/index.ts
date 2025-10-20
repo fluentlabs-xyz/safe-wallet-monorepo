@@ -275,6 +275,9 @@ export const migrateLegacySafeProps = (predictedSafeProps: PredictedSafeProps, c
     version: safeVersion,
     network: chainId,
   })
+  console.log('fallbackHandlerDeployment', fallbackHandlerDeployment)
+  console.log('chainId', chainId)
+  console.log('safeVersion', safeVersion)
   const fallbackHandlerAddress = fallbackHandlerDeployment?.defaultAddress
 
   const masterCopyDeployment = getSafeContractDeployment(chain, safeVersion)
@@ -282,6 +285,10 @@ export const migrateLegacySafeProps = (predictedSafeProps: PredictedSafeProps, c
 
   const safeFactoryDeployment = getProxyFactoryDeployment({ version: safeVersion, network: chainId })
   const safeFactoryAddress = safeFactoryDeployment?.defaultAddress
+  console.log('masterCopyDeployment', masterCopyDeployment)
+  console.log('masterCopyAddress', masterCopyAddress)
+  console.log('safeFactoryDeployment', safeFactoryDeployment)
+  console.log('safeFactoryAddress', safeFactoryAddress)
 
   if (!masterCopyAddress || !safeFactoryAddress || !fallbackHandlerAddress) {
     throw new Error('No Safe deployment found')

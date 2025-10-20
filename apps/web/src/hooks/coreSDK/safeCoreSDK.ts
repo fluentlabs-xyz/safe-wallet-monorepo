@@ -20,11 +20,16 @@ export const initSafeSDK = async ({
   undeployedSafe,
 }: SafeCoreSDKProps): Promise<Safe | undefined> => {
   const providerNetwork = (await provider.getNetwork()).chainId
-  if (providerNetwork !== BigInt(chainId)) return
+  console.log('providerNetwork:', providerNetwork, 'chainId:', chainId)
+  if (providerNetwork !== BigInt(chainId)) {
+    return
+  }
 
   const safeVersion = version ?? (await Gnosis_safe__factory.connect(address, provider).VERSION())
   let isL1SafeSingleton = chainId === chains.eth
+  console.log('implementationVersionState:', implementationVersionState)
 
+  console.log('isValidMasterCopy:', isValidMasterCopy(implementationVersionState))
   // If it is an official deployment we should still initiate the safeSDK
   if (!isValidMasterCopy(implementationVersionState)) {
     const masterCopy = implementation
@@ -32,20 +37,34 @@ export const initSafeSDK = async ({
     const safeL1Deployment = getSafeSingletonDeployments({ network: chainId, version: safeVersion })
     const safeL2Deployment = getSafeL2SingletonDeployments({ network: chainId, version: safeVersion })
 
+    console.log('🔍 Deployments fetched:', {
+      chainId,
+      safeVersion,
+      masterCopy,
+      safeL1Addresses: safeL1Deployment?.networkAddresses?.[chainId],
+      safeL2Addresses: safeL2Deployment?.networkAddresses?.[chainId],
+    })
+
     isL1SafeSingleton = isInDeployments(masterCopy, safeL1Deployment?.networkAddresses[chainId])
     const isL2SafeMasterCopy = isInDeployments(masterCopy, safeL2Deployment?.networkAddresses[chainId])
 
+    console.log('Deployment check:', { isL1SafeSingleton, isL2SafeMasterCopy })
+
     // Unknown deployment, which we do not want to support
     if (!isL1SafeSingleton && !isL2SafeMasterCopy) {
+      console.error('Unknown deployment - returning undefined!')
       return Promise.resolve(undefined)
     }
   }
   // Legacy Safe contracts
   if (isLegacyVersion(safeVersion)) {
+    console.log('Legacy version detected, forcing L1 singleton')
     isL1SafeSingleton = true
   }
+  console.log('Final isL1SafeSingleton:', isL1SafeSingleton)
 
   if (undeployedSafe) {
+    console.log('Undeployed safe detected')
     if (isPredictedSafeProps(undeployedSafe.props) || isReplayedSafeProps(undeployedSafe.props)) {
       return Safe.init({
         provider: provider._getConnection().url,
@@ -56,6 +75,7 @@ export const initSafeSDK = async ({
     // We cannot initialize a Core SDK for replayed Safes yet.
     return
   }
+  console.log('Initializing Safe SDK...')
   return Safe.init({
     provider: provider._getConnection().url,
     safeAddress: address,
